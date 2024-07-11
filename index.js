@@ -6,11 +6,16 @@ dodger.style.left = "0px";
 
 document.addEventListener('keydown', function(event){
     if(event.key === "ArrowLeft") {
-            moveDodgerLeft()
+      moveDodgerLeft()
     }
     else if(event.key === 'ArrowRight'){
-        moveDodgerRight()
+       moveDodgerRight()
     }
+    else if (event.key === "ArrowUp") {
+      moveDodgerUp();
+    } else if (event.key === "ArrowDown") {
+      moveDodgerDown();
+  }
 });
 
 function moveDodgerLeft() {
@@ -34,3 +39,20 @@ function moveDodgerRight() {
     
   } 
  
+  function moveDodgerUp() {
+    const bottomNumbers = dodger.style.bottom.replace("px", "");
+    const bottom = parseInt(bottomNumbers, 10);
+  
+    if (bottom < 360) { // Adjust this value based on the container's height
+        dodger.style.bottom = `${bottom + 1}px`;
+    }
+}
+
+function moveDodgerDown() {
+    const bottomNumbers = dodger.style.bottom.replace("px", "");
+    const bottom = parseInt(bottomNumbers, 10);
+  
+    if (bottom > 0) {
+        dodger.style.bottom = `${bottom - 1}px`;
+    }
+}
